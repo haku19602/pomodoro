@@ -4,9 +4,9 @@
       https://vuetifyjs.com/en/styles/colors/#material-colors
       找 color="名稱"
     -->
-    <v-app-bar color="red-darken-3">
+    <v-app-bar color="red-darken-4">
       <v-container class="d-flex align-center">
-        <v-app-bar-title>番茄鐘</v-app-bar-title>
+        <v-app-bar-title class="text-h5 font-weight-black">番茄鐘</v-app-bar-title>
         <!--
           https://pictogrammers.com/library/mdi/
           找 icon 名字
@@ -34,8 +34,25 @@
       </router-view>
     </v-main>
 
+    <v-footer class="bg-teal-darken-4 text-center d-flex flex-column" id="footer">
+      <div class="pt-0">
+        一寸光陰一寸金，寸金難買寸光陰
+      </div>
+      <v-divider></v-divider>
+      <div>
+        {{ new Date().getFullYear() }} — <strong>hakuPomodoro</strong>
+      </div>
+    </v-footer>
   </v-app>
 </template>
 
 <script setup>
 </script>
+
+<style scoped>
+#footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>

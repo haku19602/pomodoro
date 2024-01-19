@@ -3,7 +3,7 @@
     <v-row>
 
       <v-col cols="12">
-        <h1 class="text-center">事項</h1>
+        <h1 class="text-center teal-darken-4">事項</h1>
       </v-col>
 
       <!--
@@ -19,18 +19,9 @@
         不能這樣寫，沒過驗證 enter 也會新增資料
       -->
       <v-col cols="12">
-        <v-text-field
-          variant="solo-filled"
-          label="新增事項"
-          v-model="newItem"
-          :rules="[rules.required, rules.length]"
-          append-icon="mdi-plus"
-          ref="newItemInput"
-          @click:append="onInputSubmit"
-          @keydown.enter="onInputSubmit"
-        ></v-text-field>
+
         <v-table>
-          <thead>
+          <thead class="bg-deep-orange-lighten-5 text-h6">
             <tr>
               <th>名稱</th>
               <th>操作</th>
@@ -88,13 +79,25 @@
             </tr>
           </tbody>
         </v-table>
+
+        <v-text-field class="add-item"
+          variant="solo-filled"
+          label="新增事項"
+          v-model="newItem"
+          :rules="[rules.required, rules.length]"
+          append-icon="mdi-plus"
+          ref="newItemInput"
+          @click:append="onInputSubmit"
+          @keydown.enter="onInputSubmit"
+        ></v-text-field>
       </v-col>
+
       <v-col cols="12">
-        <h1 class="text-center">已完成事項</h1>
+        <h1 class="text-center teal-darken-4">已完成事項</h1>
       </v-col>
       <v-col col="12">
         <v-table>
-          <thead>
+          <thead class="bg-deep-orange-lighten-5 text-h6">
             <tr>
               <th>名稱</th>
               <th>操作</th>
@@ -164,3 +167,14 @@ const rules = {
   }
 }
 </script>
+
+<style>
+.add-item{
+  width: 30%;
+  margin-left: auto;
+}
+
+.teal-darken-4{
+  color: #004D40;
+}
+</style>

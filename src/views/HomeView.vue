@@ -1,25 +1,39 @@
 <template>
-  <v-container>
-    <v-row>
+  <v-container class="tomato bg-red-darken-1 rounded-circle">
+    <v-img src="../../src/assets/tomato_leaf.svg" width="300px" class="leaf"></v-img>
+    <v-row class="text-center">
       <v-col cols="12">
         <h1>{{ currentText }}</h1>
+      </v-col>
+      <v-col cols="12">
         <h1>{{ currentTime }}</h1>
       </v-col>
       <v-col cols="12">
         <v-btn
-          variant="text" icon="mdi-play"
-          :disabled="status === STATUS.COUNTING || (currentItem.length === 0 && items.length === 0)"
+          variant="text"
+          icon="mdi-play"
+          :disabled="
+            status === STATUS.COUNTING ||
+            (currentItem.length === 0 && items.length === 0)
+          "
           @click="startTimer"
         ></v-btn>
         <v-btn
-          variant="text" icon="mdi-pause" :disabled="status !== STATUS.COUNTING"
+          variant="text"
+          icon="mdi-pause"
+          :disabled="status !== STATUS.COUNTING"
           @click="pauseTimer"
         ></v-btn>
-        <v-btn variant="text" icon="mdi-skip-next" :disabled="currentItem.length === 0"
-        @click="finishTimer"></v-btn>
+        <v-btn
+          variant="text"
+          icon="mdi-skip-next"
+          :disabled="currentItem.length === 0"
+          @click="finishTimer"
+        ></v-btn>
       </v-col>
     </v-row>
   </v-container>
+
 </template>
 
 <script setup>
@@ -106,8 +120,28 @@ const currentText = computed(() => {
 })
 
 const currentTime = computed(() => {
-  const m = Math.floor(timeleft.value / 60).toString().padStart(2, '0')
+  const m = Math.floor(timeleft.value / 60)
+    .toString()
+    .padStart(2, '0')
   const s = (timeleft.value % 60).toString().padStart(2, '0')
   return m + ':' + s
 })
 </script>
+
+<style>
+.tomato{
+  width: 600px;
+  height: 500px;
+  position: relative;
+  top: 18%;
+  display: flex;
+  align-items: center;
+}
+
+.leaf{
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
